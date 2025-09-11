@@ -12,21 +12,19 @@
         /* THEME & BASE STYLES                      */
         /* ======================================== */
         :root {
-            /* Light Theme (Default) */
-            --bg-color: #fdf6e3; /* A soft, book-page cream */
+            --bg-color: #fdf6e3;
             --text-color: #333333;
-            --heading-color: #5d4037; /* Muted brown */
-            --accent-color: #a0522d; /* Sienna, a classic accent */
+            --heading-color: #5d4037;
+            --accent-color: #a0522d;
             --border-color: #e0d9c6;
             --panel-bg: rgba(255, 255, 255, 0.5);
         }
 
         html.dark-mode {
-            /* Dark Theme */
             --bg-color: #1e1e1e;
             --text-color: #dcdcdc;
             --heading-color: #e0e0e0;
-            --accent-color: #d4af37; /* Gold stands out in the dark */
+            --accent-color: #d4af37;
             --border-color: #444444;
             --panel-bg: rgba(40, 40, 40, 0.5);
         }
@@ -127,7 +125,6 @@
             align-items: flex-start;
         }
         
-        /* Left Panel: Table of Contents & Search */
         .left-panel {
             position: sticky;
             top: 2rem;
@@ -163,7 +160,7 @@
             margin-top: 1.5rem;
         }
         .search-box:focus {
-            outline: none; /* Removes the default blue shadow */
+            outline: none;
             border-color: var(--accent-color);
         }
 
@@ -194,13 +191,12 @@
             color: #1e1e1e;
         }
 
-        /* Right Panel: Content Viewer */
         .content-viewer {
             padding: 1rem 0;
         }
         
         .content-viewer > section {
-            display: none; /* Hidden by default, shown by JS */
+            display: none;
         }
         
         .content-viewer > section.active {
@@ -222,8 +218,8 @@
         
         .poem-text {
             font-size: 1.2rem;
-            line-height: 2;
-            max-width: 65ch; /* Optimal for reading */
+            line-height: 1.5;
+            max-width: 65ch;
         }
         
         .poem-commentary {
@@ -253,7 +249,6 @@
             margin-bottom: 1rem;
         }
         
-        /* Footer */
         .site-footer {
             text-align: center;
             margin-top: 4rem;
@@ -263,7 +258,6 @@
             border-top: 1px solid var(--border-color);
         }
         
-        /* Responsive Design */
         @media (max-width: 900px) {
             .book-layout {
                 grid-template-columns: 1fr;
@@ -614,7 +608,7 @@
             const welcomeMessageHTML = poemDisplayArea.innerHTML;
             
             // --- 1. Populate Table of Contents ---
-            poems.sort((a, b) => new Date(a.date) - new Date(b.date)); // Sort poems by date, newest first
+            poems.sort((a, b) => new Date(a.date) - new Date(b.date));
             poemsToc.innerHTML = poems.map(poem => `
                 <li><a href="#${poem.id}" data-poem-id="${poem.id}">${poem.title}</a></li>
             `).join('');
@@ -653,7 +647,6 @@
                 navLinks.forEach(link => link.classList.toggle('active', link.dataset.view === viewId));
             };
 
-            // NEW: Function to reset the view to the default state
             const resetToHomeView = () => {
                 switchView('poems-view');
                 poemDisplayArea.innerHTML = welcomeMessageHTML;
@@ -662,7 +655,6 @@
                     link.parentElement.style.display = '';
                 });
                 searchInput.value = '';
-                // Clean the URL hash without adding to history
                 history.pushState("", document.title, window.location.pathname + window.location.search);
             };
             
@@ -688,7 +680,6 @@
                 }
             });
 
-            // UPDATED: Search functionality to include poem text
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 
@@ -715,7 +706,7 @@
             } else if (navLink) {
                 switchView(navLink.dataset.view);
             } else {
-                switchView('poems-view'); // Default view
+                switchView('poems-view');
             }
         });
 
