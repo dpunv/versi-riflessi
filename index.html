@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Versi riflessi - A Collection</title>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAPgAAAAF+oABWcAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREiEREREREREREhEREhERERERIRIiERERERESIiIhERERERIAACIRERERIgAiIhEREREiAgAAIREREiICACIhEREREiICAAIRERERIgIAIhERERERIgICERERERERIiIREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
 
     <style>
@@ -36,7 +39,7 @@
         }
 
         body {
-            font-family: 'Source Serif Pro', 'Georgia', serif;
+            font-family: 'EB Garamond', 'Georgia', serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.7;
@@ -51,7 +54,7 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', 'Times New Roman', serif;
+            font-family: 'EB Garamond', 'Times New Roman', serif;
             color: var(--heading-color);
             line-height: 1.3;
         }
@@ -78,7 +81,7 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: 'EB Garamond', serif;
             font-size: 1.8rem;
             font-weight: 700;
             font-style: italic;
@@ -133,6 +136,42 @@
             height: calc(100vh - 4rem);
             overflow-y: auto;
         }
+        
+        /* Mobile toggle button */
+        .mobile-toggle {
+            display: none;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .mobile-toggle:hover {
+            background-color: var(--heading-color);
+        }
+        
+        html.dark-mode .mobile-toggle {
+            color: #1e1e1e;
+        }
+        
+        .mobile-toggle svg {
+            width: 18px;
+            height: 18px;
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .mobile-toggle.expanded svg {
+            transform: rotate(180deg);
+        }
+        
         .search-container {
             position: relative;
         }
@@ -151,7 +190,7 @@
             width: 100%;
             padding: 0.75rem 1rem 0.75rem 2.7rem;
             font-size: 1rem;
-            font-family: 'Source Serif Pro', serif;
+            font-family: 'EB Garamond', serif;
             border: 1px solid var(--border-color);
             border-radius: 5px;
             background-color: var(--bg-color);
@@ -271,6 +310,20 @@
                 margin-bottom: 2rem;
                 padding-bottom: 2rem;
             }
+            
+            .mobile-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .panel-content {
+                display: none;
+            }
+            
+            .panel-content.expanded {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -284,7 +337,25 @@
                     <a href="#about" data-view="about-view">Il progetto</a>
                 </nav>
                 <button id="theme-toggle" class="theme-switcher" aria-label="Toggle dark mode">
-                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 01-1.06 0l-1.59-1.591a.75.75 0 111.06-1.06l1.59 1.59a.75.75 0 010 1.061zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM6.106 17.894a.75.75 0 010-1.06l1.59-1.59a.75.75 0 111.06 1.06l-1.59 1.59a.75.75 0 01-1.06 0zM3 12a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h2.25A.75.75 0 013 12zM6.106 6.106a.75.75 0 011.06 0l1.591 1.59a.75.75 0 01-1.06 1.06l-1.59-1.59a.75.75 0 010-1.06z"></path></svg>
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 24 24" 
+                        width="24" height="24" 
+                        stroke="currentColor" fill="none" 
+                        stroke-width="2" stroke-linecap="round">
+                    
+                        <circle cx="12" cy="12" r="5" fill="currentColor"/>
+
+                        <line x1="12" y1="1"  x2="12" y2="4"/>
+                        <line x1="12" y1="20" x2="12" y2="23"/>
+                        <line x1="1"  y1="12" x2="4"  y2="12"/>
+                        <line x1="20" y1="12" x2="23" y2="12"/>
+                        
+                        <line x1="4.22" y1="4.22" x2="6.34" y2="6.34"/>
+                        <line x1="17.66" y1="17.66" x2="19.78" y2="19.78"/>
+                        
+                        <line x1="17.66" y1="6.34" x2="19.78" y2="4.22"/>
+                        <line x1="4.22" y1="19.78" x2="6.34" y2="17.66"/>
+                    </svg>
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
                 </button>
             </div>
@@ -293,12 +364,20 @@
         <main>
             <div class="book-layout">
                 <aside class="left-panel">
-                    <div class="search-container">
-                        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2a8 8 0 105.293 14.293l4.907 4.907a1 1 0 001.414-1.414l-4.907-4.907A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"></path></svg>
-                        <input type="search" id="search-input" class="search-box" placeholder="Cerca per titolo o testo...">
+                    <button class="mobile-toggle" id="mobile-toggle" aria-label="Mostra/nascondi elenco poesie">
+                        Elenco poesie
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 16l-6-6h12l-6 6z"/>
+                        </svg>
+                    </button>
+                    <div class="panel-content" id="panel-content">
+                        <div class="search-container">
+                            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2a8 8 0 105.293 14.293l4.907 4.907a1 1 0 001.414-1.414l-4.907-4.907A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"></path></svg>
+                            <input type="search" id="search-input" class="search-box" placeholder="Cerca per titolo o testo...">
+                        </div>
+                        <ul id="poems-toc">
+                        </ul>
                     </div>
-                    <ul id="poems-toc">
-                    </ul>
                 </aside>
 
                 <div class="content-viewer">
@@ -645,6 +724,8 @@
             const poemDisplayArea = document.getElementById('poem-display-area');
             const searchInput = document.getElementById('search-input');
             const logoLink = document.getElementById('logo-link');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const panelContent = document.getElementById('panel-content');
 
             const welcomeMessageHTML = poemDisplayArea.innerHTML;
             
@@ -698,17 +779,37 @@
                 searchInput.value = '';
                 history.pushState("", document.title, window.location.pathname + window.location.search);
             };
+
+            const toggleMobilePanel = () => {
+                const isExpanded = panelContent.classList.contains('expanded');
+                panelContent.classList.toggle('expanded');
+                mobileToggle.classList.toggle('expanded');
+                
+                mobileToggle.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            const closeMobilePanelIfOpen = () => {
+                if (window.innerWidth <= 900 && panelContent.classList.contains('expanded')) {
+                    panelContent.classList.remove('expanded');
+                    mobileToggle.classList.remove('expanded');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                }
+            };
             
             // --- 3. Event Listeners ---
             logoLink.addEventListener('click', (e) => {
                 e.preventDefault();
                 resetToHomeView();
+                closeMobilePanelIfOpen();
             });
+
+            mobileToggle.addEventListener('click', toggleMobilePanel);
 
             document.querySelector('.main-nav').addEventListener('click', (e) => {
                 if (e.target.tagName === 'A' && e.target.dataset.view) {
                     e.preventDefault();
                     switchView(e.target.dataset.view);
+                    closeMobilePanelIfOpen();
                 }
             });
             
@@ -718,6 +819,7 @@
                     switchView('poems-view');
                     displayPoem(e.target.dataset.poemId);
                     window.location.hash = e.target.hash;
+                    closeMobilePanelIfOpen();
                 }
             });
 
@@ -734,6 +836,14 @@
                         linkElement.parentElement.style.display = isMatch ? '' : 'none';
                     }
                 });
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 900) {
+                    panelContent.classList.remove('expanded');
+                    mobileToggle.classList.remove('expanded');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                }
             });
 
             // --- 4. Handle Initial Page Load ---
