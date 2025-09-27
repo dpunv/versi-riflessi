@@ -96,18 +96,6 @@
             align-items: center;
             gap: 2rem;
         }
-
-        .main-nav a {
-            font-size: 1.1rem;
-            margin-left: 1.5rem;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
-        }
-
-        .main-nav a.active {
-            border-bottom-color: var(--accent-color);
-            font-weight: 600;
-        }
         
         .theme-switcher {
             background: none; border: none; cursor: pointer; color: var(--text-color);
@@ -333,9 +321,6 @@
         <header class="site-header">
             <a href="#" class="logo" id="logo-link">Versi riflessi</a>
             <div class="header-right">
-                <nav class="main-nav">
-                    <a href="#about" data-view="about-view">Il progetto</a>
-                </nav>
                 <button id="theme-toggle" class="theme-switcher" aria-label="Toggle dark mode">
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" 
                         viewBox="0 0 24 24" 
@@ -385,24 +370,16 @@
                     <section id="poems-view" class="active">
                         <div id="poem-display-area">
                             <div class="page-content">
-                                <h2>Benvenuto</h2>
-                                <p>Seleziona una poesia dalla lista a sinistra per iniziare la lettura.</p>
-                                <p>Puoi anche usare la barra di ricerca per trovare un titolo specifico o una frase nel testo.</p>
+                                <h2>Versi riflessi</h2>
+                                <p>Versi riflessi nasce per condividere le poesie che ho scritto. Spero che a qualcuno possano piacere e che magari possano far riflettere un po'.</p>
+                                <br>
+                                <h3>L'autore</h3>
+                                <p>Mi chiamo Davide, sono un informatico, e di tanto in tanto mi diletto con qualche passione secondaria come scrivere poesie.</p>
+                                <br>
+                                <h3>Contattami</h3>
+                                <p>Se ti va, puoi lasciare un messaggio, una riflessione o un saluto.</p>
+                                <p>Puoi scrivermi a: <a href="mailto:contact@versiriflessi.net">contact@versiriflessi.net</a></p>
                             </div>
-                        </div>
-                    </section>
-                    
-                    <section id="about-view">
-                        <div class="page-content">
-                            <h2>"Versi riflessi"</h2>
-                            <p>Versi riflessi nasce per condividere le poesie che ho scritto. Spero che a qualcuno possano piacere e che magari possano far riflettere un po'.</p>
-                            <br>
-                            <h3>L'autore</h3>
-                            <p>Mi chiamo Davide, sono un informatico, e di tanto in tanto mi diletto con qualche passione secondaria come scrivere poesie.</p>
-                            <br>
-                            <h3>Contattami</h3>
-                            <p>Se ti va, puoi lasciare un messaggio, una riflessione o un saluto.</p>
-                            <p>Puoi scrivermi a: <a href="mailto:contact@versiriflessi.net">contact@versiriflessi.net</a></p>
                         </div>
                     </section>
                 </div>
@@ -421,7 +398,6 @@
         const poems = [
             {
                 id: 'numeri-naturali',
-                count_view: 0,
                 title: 'Numeri naturali',
                 author: 'Davide',
                 date: '2024-02-29',
@@ -432,12 +408,10 @@
                     'adolescenza della natura,',
                     'incontenibile dai numeri',
                     'che pure la definiscono.'
-                ],
-                commentary: 'Scritta il 29 Febbraio, pensando a quanto la matematica è il miglior strumento che abbiamo per descrivere la natura, nonostante la natura non sarà mai imbrigliabile dai numeri. I primi quattro versi si riferiscono proprio alla primavera che stà arrivando, e descrivono come la natura sia complessa, come in un uomo possono esserlo l\'adolescenza e la mezz\'età, entrambi aggettivi che descrivono per bene anche la primavera.'
+                ]
             },
             {
                 id: 'ciclo-dell-acqua',
-                count_view: 0,
                 title: 'Il ciclo dell\'acqua',
                 author: 'Davide',
                 date: '2025-07-11',
@@ -453,12 +427,10 @@
                     'finisce dove non sa',
                     'ai suoi simili cantando',
                     'una vecchia musica nuova'
-                ],
-                commentary: 'Scritta in riva al mare, racconta dell\'acqua e del suo percorso, focalizzandosi su una goccia. La nube, che è acuqa, si riflette nel mare, e pensa che essa è ciò che un domani sarà, chiudendo il ciclo dell\'acqua. Ma nonostante essa continua il suo ciclo, il resto del mondo non cambia, i raggi del sole sono identici, e si separano e uniscono in un arcobaleno, mentre la nuvola precipita come pioggia nel mare, diventando uno. È sempre l\'arcobaleno che finisce dove non sa, e canta la musica, cioè il rumore della pioggià che è vecchia come il mondo, eppure nuova ogni volta.'
+                ]
             },
             {
                 id: 'foresta',
-                count_view: 0,
                 title: 'Foresta',
                 author: 'Davide',
                 date: '2025-08-26',
@@ -477,13 +449,10 @@
                     'la mente si riposa',
                     'vedendo la sua casa',
                     'tranquillità gustando',
-
-                ],
-                commentary: 'Scritta pensando al paragone tra una foresta e il cervello: gli alberi corrispondono ai neuroni, le connessioni alle foglie e alle radici. Nella prima strofa si introduce il tema della foresta e della comunicazione, cioè delle melodie della foresta, come il vento tra gli alberi, che vengono cantate "senza trovar pace", senza tranquillità. La stessa cosa succede all\'uccellino della seconda strofa, che canta e sente solo la sua voce, evocando quindi un senso di solitudine, mentre dalla cima di un albero, scende verso la foce di un fiume, senza quiete (proprio perché canta). La terza strofa invece ritrova la pace e la tranquillità di una formica che ritorna al suo formicaio e che già pregusta la calma e il riposo che la dentro può trovare. Non a caso la formica, dato che le formiche non emettono suoni, e possono quindi rimanere tranquille.'
+                ]
             },
             {
                 id: 'il-viaggio-della-medusa',
-                count_view: 0,
                 title: 'Il viaggio della medusa',
                 author: 'Davide',
                 date: '2025-08-28',
@@ -502,12 +471,10 @@
                     'per cercare qualcosa',
                     'che gli faccia da musa',
                     'nella vita noiosa'
-                ],
-                commentary: 'Scritta pensando ad un amore che non è corrisposto. La medusa si vuole sposare un domani, ma trova la porta chiusa, cioè il suo amore non è corrisposto, e muore la mimosa che ha portato dentro grazie alla felicità dell\'amore. Subita la delusione va in giro cercando di capire il perché (una scusa) non sia stata accettata, in una giornata afosa, cioè calda e soffocante. Superato l\'amore, rimane solo un vuoto, che deve essere colmato da qualcosa o qualcuno, e la medusa lo cerca senza sosta usando tutte le proprie risorse.'
+                ]
             },
             {
                 id: 'transizione-di-fase',
-                count_view: 0,
                 title: 'Transizione di Fase',
                 author: 'Davide',
                 date: '2025-08-31',
@@ -526,12 +493,10 @@
                     'arriva a nuova riva',
                     'ora è tutto chiaro',
                     'Ecco l\'acqua sorgiva'
-                ],
-                commentary: 'La transizione di fase è quel processo per cui una sostanza passa da uno stato della materia ad un altro. In questo contesto indica il cambio di idee, la rottura delle certezze vecchie per formare verità nuove. La poesia è un continuo parallelismo tra un castello che cade durante una battaglia e un soldato che, perso il castello e trovandosi senza certezze, infine giunge a una nuova idea, ad una nuova tranquillità data da una nuova sorgente'
+                ]
             },
             {
                 id: 'il-giardino-dietro-casa',
-                count_view: 0,
                 title: 'Il giardino dietro casa',
                 author: 'Davide',
                 date: '2025-08-31',
@@ -550,12 +515,10 @@
                     'con chi mi sta intorno',
                     'vado per la salita:',
                     'vecchi legami formo.'
-                ],
-                commentary: 'Scritta ripensando a tutte le cose che ci stanno vicino, ma che non degnamo mai di uno sguardo. Questo finché non decidiamo di farci una passeggiata, e scoprire tante piccole cose che attirano la nostra curiosità, stupendoci molto più di quanto possa fare tutto il resto.'
+                ]
             },
             {
                 id: 'discorso-temporale',
-                count_view: 0,
                 title: 'Discorso temporale',
                 author: 'Davide',
                 date: '2025-09-07',
@@ -574,12 +537,10 @@
                     'di lontano ricordo',
                     'e sentendo mi pento:',
                     'sento dolore sordo.',
-                ],
-                commentary: 'Questa poesia ha un significato più esplicito delle altre. Il tema principale è il tempo che passa e tutte le cose che porta (le parole che parla), come noi lo sprechiamo, la nostalgia e i rimpianti del passato.'
+                ]
             },
             {
                 id: 'spese-di-contesto',
-                count_view: 0,
                 title: 'Spese di contesto',
                 author: 'Davide',
                 date: '2025-09-09',
@@ -598,12 +559,10 @@
                     'sento nel fragore',
                     'del girevole disco',
                     'sul perpetuo rotore',
-                ],
-                commentary: 'A volte vogliamo aderire a determinati principi, diciamo di voler e voler fare cose per aderire a quei principi, ma ci pesa, all\'atto pratico, fare quelle cose: è questo il costo della coerenza. Allo stesso modo, il contesto ci influenza a credere e fare molte cose, ed anche questo è un costo che passiamo. I motivi però si trovano solo dentro di noi, scritti su quel disco, che è il cervello, che non si ferma mai.'
+                ]
             },
             {
                 id: 'continuo',
-                count_view: 0,
                 title: 'Continuo',
                 author: 'Davide',
                 date: '2025-09-09',
@@ -647,12 +606,10 @@
                     'e torna al profondo',
                     'dove guarda felice',
                     'il continuo del mondo.'
-                ],
-                commentary: 'Lo scontro tra idee diverse è un processo grandioso e terribile, sopratutto quando riguarda quei principi profondi, radicati in noi, sui quali basiamo buona parte della conoscenza. Questo processo può attraversare varie fasi, da quella distruttiva dello scontro a quelle costruttive di messa in ordine e lotta per nuove idee. Infine il processo si conclude con nuovi pensieri che divengono la base della conoscenza, in attesa anche questi di subire lo stesso processo dei loro predecessori'
+                ]
             },
             {
                 id: 'ricerca-di-luci',
-                count_view: 0,
                 title: 'Ricerca di luci',
                 author: 'Davide',
                 date: '2025-09-16',
@@ -671,12 +628,10 @@
                     'e vado in confusione',
                     'per l\'esponente io cedo',
                     'che supera il milione.'
-                ],
-                commentary: 'Quante volte ci sentiamo sopraffatti dalle idee? Ecco di cosa parla questa poesia.'
+                ]
             },
             {
                 id: 'alberi-sul-lago',
-                count_view: 0,
                 title: 'Alberi sul lago',
                 author: 'Davide',
                 date: '2025-09-17',
@@ -688,12 +643,10 @@
                     'da se stessi solo dipendono',
                     'per avere nutrimento di vita',
                     'e dare al mondo se stessi.'
-                ],
-                commentary: 'Suggestioni di un paesaggio onirico.'
+                ]
             },
             {
                 id: 'percezioni',
-                count_view: 0,
                 title: 'Percezioni',
                 author: 'Davide',
                 date: '2025-09-20',
@@ -714,12 +667,10 @@
                     'uno nel passato inconscio,',
                     'uno nel presente scivoloso,',
                     'uno nel futuro inafferrabile.'
-                ],
-                commentary: 'Spesso sento delle sensazioni che fanno parte del mio passato. E con il passare del tempo queste si modificano, cambiano faccia e diventano qualcosa che non avrei mai pensato potessero essere.'
+                ]
             },
             {
                 id: 'eco-nel-tempo',
-                count_view: 0,
                 title: 'Eco nel tempo',
                 author: 'Davide',
                 date: '2025-09-20',
@@ -747,8 +698,29 @@
                     'Il me stesso temporale io sono.',
                     'Me stesso...',
                     'Io sono.'
-                ],
-                commentary: 'Ci sentiamo spesso intrappolati in un ciclo che non ha fine. Ma ci sono dei momenti che non vorremmo che passino mai.'
+                ]
+            },
+            {
+                id: 'cura-alla-solitudine',
+                title: 'Cura alla solitudine',
+                author: 'Davide',
+                date: '2025-09-23',
+                lines: [
+                    'Quando sei solo nella stanza',
+                    'esci fuori e vai a guardare',
+                    'lo specchio vivente che danza',
+                    'che per le vie del mondo appare.',
+                    '',
+                    'Eppure per noi è molto difficile',
+                    'parlare con il riflesso esterno',
+                    'poiché diverso è quanto è simile:',
+                    'egli è unico rifugio nell\'inverno.',
+                    '',
+                    'Solo negandoci troviamo il tesoro',
+                    'che nel mondo ha più valore',
+                    'eppure lo scambiamo per arido oro',
+                    'e poi ci lamentiamo per lunghe ore.'
+                ]
             }
         ];
         document.addEventListener('DOMContentLoaded', () => {
@@ -777,7 +749,6 @@
             // ========================================
             // MAIN APPLICATION LOGIC
             // ========================================
-            const navLinks = document.querySelectorAll('.main-nav a');
             const contentSections = document.querySelectorAll('.content-viewer > section');
             const poemsToc = document.getElementById('poems-toc');
             const poemDisplayArea = document.getElementById('poem-display-area');
@@ -801,8 +772,6 @@
                 const poem = poems.find(p => p.id === poemId);
                 if (!poem) return;
 
-                poem.count_view++;
-
                 const poemHTML = `
                     <article class="poem-display">
                         <h2>${poem.title}</h2>
@@ -810,12 +779,6 @@
                         <div class="poem-text">
                             ${poem.lines.map(line => `<div>${line || '&nbsp;'}</div>`).join('')}
                         </div>
-                        ${(poem.commentary && poem.count_view >= 5) ? `
-                        <div class="poem-commentary">
-                            <h3>Commento</h3>
-                            <p>${poem.commentary}</p>
-                        </div>
-                        ` : ''}
                     </article>
                 `;
                 poemDisplayArea.innerHTML = poemHTML;
@@ -825,7 +788,6 @@
 
             const switchView = (viewId) => {
                 contentSections.forEach(section => section.classList.toggle('active', section.id === viewId));
-                navLinks.forEach(link => link.classList.toggle('active', link.dataset.view === viewId));
             };
 
             const resetToHomeView = () => {
@@ -864,14 +826,6 @@
 
             mobileToggle.addEventListener('click', toggleMobilePanel);
 
-            document.querySelector('.main-nav').addEventListener('click', (e) => {
-                if (e.target.tagName === 'A' && e.target.dataset.view) {
-                    e.preventDefault();
-                    switchView(e.target.dataset.view);
-                    closeMobilePanelIfOpen();
-                }
-            });
-            
             poemsToc.addEventListener('click', (e) => {
                 if (e.target.tagName === 'A' && e.target.dataset.poemId) {
                     e.preventDefault();
@@ -908,13 +862,10 @@
             // --- 4. Handle Initial Page Load ---
             const currentHash = window.location.hash.substring(1);
             const poemLink = Array.from(tocLinks).find(link => link.hash === `#${currentHash}`);
-            const navLink = Array.from(navLinks).find(link => link.dataset.view === currentHash);
 
             if (poemLink) {
                 switchView('poems-view');
                 displayPoem(poemLink.dataset.poemId);
-            } else if (navLink) {
-                switchView(navLink.dataset.view);
             } else {
                 switchView('poems-view');
             }
