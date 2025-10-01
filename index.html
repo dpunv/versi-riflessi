@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAPgAAAAF+oABWcAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREiEREREREREREhEREhERERERIRIiERERERESIiIhERERERIAACIRERERIgAiIhEREREiAgAAIREREiICACIhEREREiICAAIRERERIgIAIhERERERIgICERERERERIiIREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
 
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#a0522d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
     <style>
         /* ======================================== */
         /* THEME & BASE STYLES                      */
@@ -730,6 +736,74 @@
                     'eppure lo scambiamo per arido oro',
                     'e poi ci lamentiamo per lunghe ore.'
                 ]
+            },
+            {
+                id: 'espressione-esponenziale',
+                title: 'Espressione esponenziale',
+                author: 'Davide',
+                date: '2025-10-01',
+                lines: [
+                    'Quello che un verso può diventare',
+                    'l\'occhio attento ce lo deve dire',
+                    'facendo così l\'euristica dominare.',
+                    '',
+                    'Combinazioni infinite ci sono',
+                    'che contarle ti fa invecchiare',
+                    'come musica con più di un tono',
+                    '',
+                    'In questo quello che facciamo è vita',
+                    'che a tentoni cerca di migliorare',
+                    'per cupe valli facendo una gita.'
+                ]
+            },
+            {
+                id: 'in-giro-ispirazioni',
+                title: 'In giro, ispirazioni',
+                author: 'Davide',
+                date: '2025-10-01',
+                lines: [
+                    'Come il suono ci ispira',
+                    'vita ed esperienze possiamo fare',
+                    'tutte le volte a riprovare',
+                    'come a se il tempo ci tira.',
+                    '',
+                    'Colori liberi alla confusione vanno',
+                    'tanto che molti vogliono cancellare',
+                    'perché non vedono ciò che appare',
+                    'e la libertà della vita non sanno.',
+                    '',
+                    'Colori e suoni insieme stanno',
+                    'per il nostro diletto lavorare',
+                    'che ci porta sempre a pensare:',
+                    'tante nuove esperienze diverranno.'
+                ]
+            },
+            {
+                id: 'per-i-picchi',
+                title: 'Per i picchi',
+                author: 'Davide',
+                date: '2025-10-01',
+                lines: [
+                    'Ciò che ci fa stare bene',
+                    'è l\'idea di qualcosa di banale',
+                    'che ci faccia spostare di un canale',
+                    'la ricerca della nostra vita.',
+                    '',
+                    'Mi giro, mi volto',
+                    'di nuovo all\'inizio mi trovo',
+                    'proprio all\'uscita del mio covo',
+                    'che per molto vicino mi stà.',
+                    '',
+                    'Mi sposto, scappo un po\'',
+                    'ma dalle ombre fuga non c\'è',
+                    'tanto che la testa mi gira come te',
+                    'insieme scalando questa via.',
+                    '',
+                    'Picchi improvvisi io vedo:',
+                    'gioia al pensiero di salire',
+                    'ma si abbassa prima di partire',
+                    'e di nuovo sono in questo piatto mar.'
+                ]
             }
         ];
         document.addEventListener('DOMContentLoaded', () => {
@@ -880,6 +954,13 @@
             }
         });
 
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js")
+            .then(() => console.log("Service Worker registered"))
+            .catch(err => console.error("SW registration failed:", err));
+        }
     </script>
 </body>
 </html>
