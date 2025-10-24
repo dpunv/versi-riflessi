@@ -7,7 +7,7 @@ glyphhanger index.html --subset=Neuton/Neuton-Regular.ttf || {
     exit 1; 
 }
 
-python3 minimize.py || { 
+python3 hooks/minimize.py full.html index.html || { 
     echo "Python script failed. Aborting commit."; 
     exit 1; 
 }
