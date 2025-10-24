@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Running custom pre-commit hook..."
+
+glyphhanger index.html --subset=Neuton/Neuton-Regular.ttf || { 
+    echo "Command failed. Aborting commit."; 
+    exit 1; 
+}
+
+python3 minimize.py || { 
+    echo "Python script failed. Aborting commit."; 
+    exit 1; 
+}
+
+echo "Pre-commit checks passed successfully!"
