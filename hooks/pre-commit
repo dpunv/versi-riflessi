@@ -12,4 +12,6 @@ python3 hooks/minimize.py full.html index.html || {
     exit 1; 
 }
 
+git add index.html
+
 echo "Pre-commit checks passed successfully!"
