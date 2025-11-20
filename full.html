@@ -325,6 +325,90 @@
                 display: block;
             }
         }
+        /* ======================================== */
+        /* EASTER EGG STYLES (Final Version)        */
+        /* ======================================== */
+
+        /* Classe per gli elementi che cadono */
+        .falling-element {
+            /* Rimbalzo realistico all'atterraggio */
+            transition: transform 1s cubic-bezier(0.5, 1.6, 0.4, 0.7);
+            transform: translateY(var(--fall-distance)) rotate(var(--fall-rotate));
+            
+            pointer-events: none;
+            position: relative; 
+            z-index: 10; 
+            
+            /* MODIFICA: Opacità al 100% per tenerli ben visibili */
+            opacity: 1 !important; 
+        }
+
+        /* Contenitore scuro che copre tutto lo schermo */
+        #secret-poem-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            /* MODIFICA: Sfondo semi-trasparente scuro. 
+            Così vedi gli elementi crollati sotto, ma il testo risalta. */
+            background-color: rgba(0, 0, 0, 0.7); 
+            backdrop-filter: blur(2px); /* Aggiunge un leggero effetto sfocato al caos sotto */
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in;
+            z-index: 9999; /* Altissimo, sopra a tutto */
+        }
+
+        #secret-poem-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Il box vero e proprio che contiene il testo */
+        .secret-content {
+            text-align: center;
+            max-width: 600px;
+            padding: 3rem;
+            
+            /* MODIFICA: Sfondo solido basato sul tema (chiaro o scuro) 
+            per rendere il testo leggibile sopra il caos */
+            background-color: var(--bg-color); 
+            color: var(--text-color);
+            
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Ombra profonda per staccarlo dallo sfondo */
+            position: relative;
+        }
+
+        .secret-content h2 {
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            font-family: 'EB Garamond', serif;
+        }
+
+        .secret-content button {
+            margin-top: 1.5rem;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            background: var(--accent-color);
+            color: #fff; /* Testo bianco sul bottone */
+            border: none;
+            border-radius: 4px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .secret-content button:hover {
+            background-color: var(--heading-color);
+        }
     </style>
     <!-- Google tag (gtag.js) 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLBXQLN9W7"></script>
@@ -411,7 +495,23 @@
             <p>&copy; 2025 • Versi riflessi</p>
         </footer>
     </div>
-
+    <div id="secret-poem-overlay">
+        <div class="secret-content">
+            <h2>Grazie</h2>
+            <div class="poem-text" style="font-style: italic; margin-bottom: 2rem;">
+                <div>Hei tu, lettore</div>
+                <div>che leggi versi</div>
+                <div>scritti in ore e ore</div>
+                <div>il riflesso è rotto</div>
+                <div>grazie!</div>
+            </div>
+            <button id="reset-site-btn">Rifletti ancora</button>
+        </div>
+    </div>
+    <div id="secret-poem-overlay">
+        <div class="secret-content">
+        </div>
+    </div>
     <script>
         // ========================================
         // POEM DATA
@@ -902,7 +1002,7 @@
             {
                 id: 'semplice-o-complesso',
                 title: 'Semplice o Complesso',
-                date: '2025-11-21',
+                date: '2025-11-11',
                 lines: [
                     'In questa realtà',
                     'mi sento schiacciato',
@@ -917,7 +1017,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             // ========================================
-            // THEME SWITCHER LOGIC
+            // THEME SWITCHER LOGIC (Invariato)
             // ========================================
             const themeToggle = document.getElementById('theme-toggle');
             const htmlEl = document.documentElement;
@@ -1027,9 +1127,28 @@
                 }
             });
 
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 900) {
+                    panelContent.classList.remove('expanded');
+                    mobileToggle.classList.remove('expanded');
+                    mobileToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // ========================================
+            // EASTER EGG LOGIC (Corrected)
+            // ========================================
+            
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 
+                // Attivazione Easter Egg
+                if (searchTerm.trim() === 'lettere') {
+                    triggerEasterEgg();
+                    return; 
+                }
+
+                // Ricerca Normale
                 poems.forEach(poem => {
                     const title = poem.title.toLowerCase();
                     const content = poem.lines.join(' ').toLowerCase();
@@ -1042,13 +1161,76 @@
                 });
             });
 
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 900) {
-                    panelContent.classList.remove('expanded');
-                    mobileToggle.classList.remove('expanded');
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
+            const triggerEasterEgg = () => {
+                // Seleziona elementi strutturali
+                const targets = [
+                    document.querySelector('.site-header'),
+                    document.querySelector('.left-panel'),
+                    // Selezioniamo i figli diretti del viewer per farli cadere separatamente
+                    ...document.querySelectorAll('.content-viewer > section'), 
+                    document.querySelector('.site-footer')
+                ];
+
+                const windowHeight = window.innerHeight;
+
+                targets.forEach(el => {
+                    // Controlliamo che l'elemento esista e sia visibile
+                    if(el && getComputedStyle(el).display !== 'none') {
+                        const rect = el.getBoundingClientRect();
+                        
+                        // Distanza dal fondo
+                        let distanceToBottom = windowHeight - rect.bottom;
+                        
+                        // Randomizzazione per effetto "mucchio" (0-80px dal fondo)
+                        const pileRandomness = Math.random() * 80; 
+                        const finalDrop = Math.max(0, distanceToBottom - pileRandomness);
+                        
+                        // Rotazione casuale (-10 a +10 gradi)
+                        const randomDeg = (Math.random() * 20) - 10;
+
+                        // Impostiamo le variabili CSS per l'animazione
+                        el.style.setProperty('--fall-distance', `${finalDrop}px`);
+                        el.style.setProperty('--fall-rotate', `${randomDeg}deg`);
+                        
+                        el.classList.add('falling-element');
+                    }
+                });
+
+                // Mostra la poesia segreta dopo un attimo
+                setTimeout(() => {
+                    document.getElementById('secret-poem-overlay').classList.add('visible');
+                }, 1500);
+            };
+
+            // RESET FUNCTION (Corretta per pulire le variabili)
+            const resetBtn = document.getElementById('reset-site-btn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    // Nascondi overlay
+                    document.getElementById('secret-poem-overlay').classList.remove('visible');
+                    
+                    // Trova tutti gli elementi caduti
+                    const targets = document.querySelectorAll('.falling-element');
+                    
+                    targets.forEach(el => {
+                        // Rimuovi la classe che causa la caduta
+                        el.classList.remove('falling-element');
+                        
+                        // IMPORTANTE: Puliamo le proprietà inline che abbiamo aggiunto
+                        el.style.removeProperty('--fall-distance');
+                        el.style.removeProperty('--fall-rotate');
+                        el.style.transform = ''; 
+                    });
+
+                    // Pulisci la barra di ricerca
+                    searchInput.value = '';
+                    searchInput.focus();
+                    
+                    // Ripristina la lista della ricerca (mostra tutto)
+                    const allLinks = poemsToc.querySelectorAll('li');
+                    allLinks.forEach(li => li.style.display = '');
+                });
+            }
 
             // --- 4. Handle Initial Page Load ---
             const currentHash = window.location.hash.substring(1);
