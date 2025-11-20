@@ -326,12 +326,10 @@
             }
         }
         /* ======================================== */
-        /* EASTER EGG STYLES (Final Version)        */
+        /* EASTER EGG STYLES                        */
         /* ======================================== */
 
-        /* Classe per gli elementi che cadono */
         .falling-element {
-            /* Rimbalzo realistico all'atterraggio */
             transition: transform 1s cubic-bezier(0.5, 1.6, 0.4, 0.7);
             transform: translateY(var(--fall-distance)) rotate(var(--fall-rotate));
             
@@ -339,11 +337,9 @@
             position: relative; 
             z-index: 10; 
             
-            /* MODIFICA: Opacità al 100% per tenerli ben visibili */
             opacity: 1 !important; 
         }
 
-        /* Contenitore scuro che copre tutto lo schermo */
         #secret-poem-overlay {
             position: fixed;
             top: 0;
@@ -351,10 +347,8 @@
             width: 100%;
             height: 100%;
             
-            /* MODIFICA: Sfondo semi-trasparente scuro. 
-            Così vedi gli elementi crollati sotto, ma il testo risalta. */
             background-color: rgba(0, 0, 0, 0.7); 
-            backdrop-filter: blur(2px); /* Aggiunge un leggero effetto sfocato al caos sotto */
+            backdrop-filter: blur(2px);
             
             display: flex;
             justify-content: center;
@@ -362,7 +356,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 1s ease-in;
-            z-index: 9999; /* Altissimo, sopra a tutto */
+            z-index: 9999;
         }
 
         #secret-poem-overlay.visible {
@@ -370,20 +364,17 @@
             visibility: visible;
         }
 
-        /* Il box vero e proprio che contiene il testo */
         .secret-content {
             text-align: center;
             max-width: 600px;
             padding: 3rem;
             
-            /* MODIFICA: Sfondo solido basato sul tema (chiaro o scuro) 
-            per rendere il testo leggibile sopra il caos */
             background-color: var(--bg-color); 
             color: var(--text-color);
             
             border: 2px solid var(--accent-color);
             border-radius: 8px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); /* Ombra profonda per staccarlo dallo sfondo */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             position: relative;
         }
 
@@ -398,7 +389,7 @@
             padding: 0.8rem 1.5rem;
             cursor: pointer;
             background: var(--accent-color);
-            color: #fff; /* Testo bianco sul bottone */
+            color: #fff;
             border: none;
             border-radius: 4px;
             font-family: 'EB Garamond', serif;
@@ -410,15 +401,6 @@
             background-color: var(--heading-color);
         }
     </style>
-    <!-- Google tag (gtag.js) 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HLBXQLN9W7"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-HLBXQLN9W7');
-</script>-->
 </head>
 <body>
 
@@ -528,7 +510,8 @@
                     'adolescenza della natura,',
                     'incontenibile dai numeri',
                     'che pure la definiscono.'
-                ]
+                ],
+                note: 'Scritta il 29 Febbraio, pensando a quanto la matematica è il miglior strumento che abbiamo per descrivere la natura, nonostante la natura non sarà mai imbrigliabile dai numeri. I primi quattro versi si riferiscono proprio alla primavera che stà arrivando, e descrivono come la natura sia complessa, come in un uomo possono esserlo l\'adolescenza e la mezz\'età, entrambi aggettivi che descrivono per bene anche la primavera.'
             },
             {
                 id: 'ciclo-dell-acqua',
@@ -546,7 +529,8 @@
                     'finisce dove non sa',
                     'ai suoi simili cantando',
                     'una vecchia musica nuova'
-                ]
+                ],
+                note: 'Scritta in riva al mare, racconta dell\'acqua e del suo percorso, focalizzandosi su una goccia. La nube, che è acuqa, si riflette nel mare, e pensa che essa è ciò che un domani sarà, chiudendo il ciclo dell\'acqua. Ma nonostante essa continua il suo ciclo, il resto del mondo non cambia, i raggi del sole sono identici, e si separano e uniscono in un arcobaleno, mentre la nuvola precipita come pioggia nel mare, diventando uno. È sempre l\'arcobaleno che finisce dove non sa, e canta la musica, cioè il rumore della pioggià che è vecchia come il mondo, eppure nuova ogni volta.'
             },
             {
                 id: 'foresta',
@@ -567,7 +551,8 @@
                     'la mente si riposa',
                     'vedendo la sua casa',
                     'tranquillità gustando',
-                ]
+                ],
+                note: 'Scritta pensando al paragone tra una foresta e il cervello: gli alberi corrispondono ai neuroni, le connessioni alle foglie e alle radici. Nella prima strofa si introduce il tema della foresta e della comunicazione, cioè delle melodie della foresta, come il vento tra gli alberi, che vengono cantate "senza trovar pace", senza tranquillità. La stessa cosa succede all\'uccellino della seconda strofa, che canta e sente solo la sua voce, evocando quindi un senso di solitudine, mentre dalla cima di un albero, scende verso la foce di un fiume, senza quiete (proprio perché canta). La terza strofa invece ritrova la pace e la tranquillità di una formica che ritorna al suo formicaio e che già pregusta la calma e il riposo che la dentro può trovare. Non a caso la formica, dato che le formiche non emettono suoni, e possono quindi rimanere tranquille.'
             },
             {
                 id: 'il-viaggio-della-medusa',
@@ -588,7 +573,8 @@
                     'per cercare qualcosa',
                     'che gli faccia da musa',
                     'nella vita noiosa'
-                ]
+                ],
+                note: 'Scritta pensando ad un amore che non è corrisposto. La medusa si vuole sposare un domani, ma trova la porta chiusa, cioè il suo amore non è corrisposto, e muore la mimosa che ha portato dentro grazie alla felicità dell\'amore. Subita la delusione va in giro cercando di capire il perché (una scusa) non sia stata accettata, in una giornata afosa, cioè calda e soffocante. Superato l\'amore, rimane solo un vuoto, che deve essere colmato da qualcosa o qualcuno, e la medusa lo cerca senza sosta usando tutte le proprie risorse.'
             },
             {
                 id: 'transizione-di-fase',
@@ -609,7 +595,8 @@
                     'arriva a nuova riva',
                     'ora è tutto chiaro',
                     'Ecco l\'acqua sorgiva'
-                ]
+                ],
+                note: 'La transizione di fase è quel processo per cui una sostanza passa da uno stato della materia ad un altro. In questo contesto indica il cambio di idee, la rottura delle certezze vecchie per formare verità nuove. La poesia è un continuo parallelismo tra un castello che cade durante una battaglia e un soldato che, perso il castello e trovandosi senza certezze, infine giunge a una nuova idea, ad una nuova tranquillità data da una nuova sorgente.'
             },
             {
                 id: 'il-giardino-dietro-casa',
@@ -630,7 +617,8 @@
                     'con chi mi sta intorno',
                     'vado per la salita:',
                     'vecchi legami formo.'
-                ]
+                ],
+                note: 'Scritta ripensando a tutte le cose che ci stanno vicino, ma che non degnamo mai di uno sguardo. Questo finché non decidiamo di farci una passeggiata, e scoprire tante piccole cose che attirano la nostra curiosità, stupendoci molto più di quanto possa fare tutto il resto.'
             },
             {
                 id: 'discorso-temporale',
@@ -651,7 +639,8 @@
                     'di lontano ricordo',
                     'e sentendo mi pento:',
                     'sento dolore sordo.',
-                ]
+                ],
+                note: 'Questa poesia ha un significato più esplicito delle altre. Il tema principale è il tempo che passa e tutte le cose che porta (le parole che parla), come noi lo sprechiamo, la nostalgia e i rimpianti del passato.'
             },
             {
                 id: 'spese-di-contesto',
@@ -672,7 +661,8 @@
                     'sento nel fragore',
                     'del girevole disco',
                     'sul perpetuo rotore',
-                ]
+                ],
+                note: 'A volte vogliamo aderire a determinati principi, diciamo di voler e voler fare cose per aderire a quei principi, ma ci pesa, all\'atto pratico, fare quelle cose: è questo il costo della coerenza. Allo stesso modo, il contesto ci influenza a credere e fare molte cose, ed anche questo è un costo che passiamo. I motivi però si trovano solo dentro di noi, scritti su quel disco, che è il cervello, che non si ferma mai.'
             },
             {
                 id: 'continuo',
@@ -718,7 +708,8 @@
                     'e torna al profondo',
                     'dove guarda felice',
                     'il continuo del mondo.'
-                ]
+                ],
+                note: 'Lo scontro tra idee diverse è un processo grandioso e terribile, sopratutto quando riguarda quei principi profondi, radicati in noi, sui quali basiamo buona parte della conoscenza. Questo processo può attraversare varie fasi, da quella distruttiva dello scontro a quelle costruttive di messa in ordine e lotta per nuove idee. Infine il processo si conclude con nuovi pensieri che divengono la base della conoscenza, in attesa anche questi di subire lo stesso processo dei loro predecessori.'
             },
             {
                 id: 'ricerca-di-luci',
@@ -739,7 +730,8 @@
                     'e vado in confusione',
                     'per l\'esponente io cedo',
                     'che supera il milione.'
-                ]
+                ],
+                note: 'Quante volte ci sentiamo sopraffatti dalle idee? Ecco di cosa parla questa poesia.'
             },
             {
                 id: 'alberi-sul-lago',
@@ -753,7 +745,8 @@
                     'da se stessi solo dipendono',
                     'per avere nutrimento di vita',
                     'e dare al mondo se stessi.'
-                ]
+                ],
+                note: 'Suggestioni di un paesaggio onirico.'
             },
             {
                 id: 'percezioni',
@@ -776,7 +769,8 @@
                     'uno nel passato inconscio,',
                     'uno nel presente scivoloso,',
                     'uno nel futuro inafferrabile.'
-                ]
+                ],
+                note: 'Spesso sento delle sensazioni che fanno parte del mio passato. E con il passare del tempo queste si modificano, cambiano faccia e diventano qualcosa che non avrei mai pensato potessero essere.'
             },
             {
                 id: 'eco-nel-tempo',
@@ -806,7 +800,8 @@
                     'Il me stesso temporale io sono.',
                     'Me stesso...',
                     'Io sono.'
-                ]
+                ],
+                note: 'Ci sentiamo spesso intrappolati in un ciclo che non ha fine. Ma ci sono dei momenti che non vorremmo che passino mai.'
             },
             {
                 id: 'cura-alla-solitudine',
@@ -827,7 +822,8 @@
                     'che nel mondo ha più valore',
                     'eppure lo scambiamo per arido oro',
                     'e poi ci lamentiamo per lunghe ore.'
-                ]
+                ],
+                note: 'Quanto è difficile confrontarsi con la realtà delle altre persone, con i loro sentimenti, con l\'amore, con l\'amicizia.'
             },
             {
                 id: 'espressione-esponenziale',
@@ -845,7 +841,8 @@
                     'In questo quello che facciamo è vita',
                     'che a tentoni cerca di migliorare',
                     'per cupe valli facendo una gita.'
-                ]
+                ],
+                note: 'La realtà che vediamo è un\'esplosione esponenziale di molte variabili, che solo l\'occhio umano, come la selezione naturale, possono cercare di dominare tramite l\'euristica. è da qui che nasce l\'arte.'
             },
             {
                 id: 'in-giro-ispirazioni',
@@ -866,7 +863,8 @@
                     'per il nostro diletto lavorare',
                     'che ci porta sempre a pensare:',
                     'tante nuove esperienze diverranno.'
-                ]
+                ],
+                note: 'Quando siamo in giro, come quando siamo soli, alcuni suoni ed alcuni colori ci ispirano grandi emozioni. I colori possono sembrare anche confusi, ma non per alcuni a cui questi colori donano vita e, insieme ai suoni, generano nuove esperienze.'
             },
             {
                 id: 'per-i-picchi',
@@ -892,7 +890,8 @@
                     'gioia al pensiero di salire',
                     'ma si abbassa prima di partire',
                     'e di nuovo sono in questo piatto mar.'
-                ]
+                ],
+                note: 'Una nuova idea ci spesso ci conquista, fino a quando non ci rendiamo conto che di fatto è una cosa normalissima, ci passa l\'entusiasmo e torniamo come prima.'
             },
             {
                 id: 'radici-di-me',
@@ -910,7 +909,8 @@
                     'triste sono non di rado',
                     'per il verde che non vè più:',
                     'solo esso vita può dare.'
-                ]
+                ],
+                note: 'Sempre più stiamo andando verso un mondo fatto di metallo e silicio. Ogni tanto è bene tornare alla natura, alle foglie, alle radici.'
             },
             {
                 id: 'dove-mi-trovo',
@@ -936,7 +936,27 @@
                     'senza buco nero, senza vuoto covo',
                     'e nulla mi rimane da fare',
                     'se non il tempo imparare ad apprezzare.'
-                ]
+                ],
+                note: 'A volte il tempo ci sembra lungo, a volte ci sembra corto. Tutto dipende da noi, da come lo trascorriamo. A volte siamo nel vuoto, a volte vicino ad un buco nero, ma poi quello che conta è imparare ad apprezzarlo.'
+            },
+            {
+                id: 'problemi-di-spazio',
+                title: 'Problemi di spazio',
+                date: '2025-10-20',
+                lines: [
+                    'Col tempo la memoria',
+                    'io devo deallocare',
+                    'per fare un po\' baldoria.',
+                    '',
+                    'Non voglio dimenticare',
+                    'i bei momenti di vita',
+                    'ma spazio io Devo fare.',
+                    '',
+                    'Nell\'overflow partita',
+                    'ci perde ogni persona',
+                    'fin quando tutta è finita.'
+                ],
+                note: 'Ogni tanto abbiamo bisogno di nuovo spazio nella nostra vita, per poter iniziare nuove cose, nuovi percorsi. Non possiamo semplicemente continuare ad accumulare, per il semplice fatto che noi siamo in grado di gestire solo un numero costante di cose contemporaneamente'
             },
             {
                 id: 'contesto',
@@ -975,7 +995,8 @@
                     'che mondo ristora',
                     'indicazione dando',
                     'lo guardo studiando.'
-                ]
+                ],
+                note: 'Per capire a fondo qualcosa, è importante analizzarne il contesto. Ciò che a prima impressione sembra qualcosa, riguardandola ci sembra altro. Il contesto è l\'informazione stessa, o buona parte di essa, che come una macchia la segue.'
             },
             {
                 id: 'calma-delle-piante',
@@ -997,7 +1018,8 @@
                     'Rosso è il dono',
                     'della lunga vita',
                     'in moto, infinita.'
-                ]
+                ],
+                note: 'Le piante, come i nostri avi, ci possono insegnare tantissimo, se solo vorremmo ascoltarli.'
             },
             {
                 id: 'semplice-o-complesso',
@@ -1011,13 +1033,34 @@
                     'Conoscendo l\'errore:',
                     'converge il semplice',
                     'in realtà indeterminate'
-                ]
+                ],
+                note: 'Ci sono due realtà infinitamente semplici, che sono la realtà fisica vera e propria, dove non esiste astrazione e tutto e uguale solo a se stesso, e la realtà di Dio, che è infinitamente semplice perché racchiude tutto in se stesso: Amore. Ma noi viviamo nella terra di mezzo, in questa infinita complessità.'
+            },
+            {
+                id: 'lento-e-cangiante',
+                title: 'Lento e cangiante',
+                date: '2025-11-20',
+                lines: [
+                    'Lento e cangiante',
+                    'ma noi nessun pixel',
+                    'vediamo mutante.',
+                    '',
+                    'di volta in volta', 
+                    'traslato è stato',
+                    'distanza non molta.',
+                    '',
+                    'Ma la somma',
+                    'grande diventa',
+                    'tanto che in overflow',
+                    'manda la gomma.'
+                ],
+                note: 'I cambiamenti sono lenti e continui. Noi spesso non ce ne rendiamo conto. Ma ad un certo punto, vengono accumulati così tanti cambiamenti che è impossibile tornare indietro. Questa è anche una delle teorie più accreditate per quanto riguarda l\'invecchiamento: si accumulano progressivamente tanti errori nel DNA.'
             }
         ];
         document.addEventListener('DOMContentLoaded', () => {
 
             // ========================================
-            // THEME SWITCHER LOGIC (Invariato)
+            // THEME SWITCHER LOGIC
             // ========================================
             const themeToggle = document.getElementById('theme-toggle');
             const htmlEl = document.documentElement;
@@ -1136,19 +1179,17 @@
             });
 
             // ========================================
-            // EASTER EGG LOGIC (Corrected)
+            // EASTER EGG LOGIC
             // ========================================
             
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 
-                // Attivazione Easter Egg
                 if (searchTerm.trim() === 'lettere') {
                     triggerEasterEgg();
                     return; 
                 }
 
-                // Ricerca Normale
                 poems.forEach(poem => {
                     const title = poem.title.toLowerCase();
                     const content = poem.lines.join(' ').toLowerCase();
@@ -1162,11 +1203,9 @@
             });
 
             const triggerEasterEgg = () => {
-                // Seleziona elementi strutturali
                 const targets = [
                     document.querySelector('.site-header'),
                     document.querySelector('.left-panel'),
-                    // Selezioniamo i figli diretti del viewer per farli cadere separatamente
                     ...document.querySelectorAll('.content-viewer > section'), 
                     document.querySelector('.site-footer')
                 ];
@@ -1174,21 +1213,16 @@
                 const windowHeight = window.innerHeight;
 
                 targets.forEach(el => {
-                    // Controlliamo che l'elemento esista e sia visibile
                     if(el && getComputedStyle(el).display !== 'none') {
                         const rect = el.getBoundingClientRect();
                         
-                        // Distanza dal fondo
                         let distanceToBottom = windowHeight - rect.bottom;
                         
-                        // Randomizzazione per effetto "mucchio" (0-80px dal fondo)
                         const pileRandomness = Math.random() * 80; 
                         const finalDrop = Math.max(0, distanceToBottom - pileRandomness);
                         
-                        // Rotazione casuale (-10 a +10 gradi)
                         const randomDeg = (Math.random() * 20) - 10;
 
-                        // Impostiamo le variabili CSS per l'animazione
                         el.style.setProperty('--fall-distance', `${finalDrop}px`);
                         el.style.setProperty('--fall-rotate', `${randomDeg}deg`);
                         
@@ -1196,37 +1230,25 @@
                     }
                 });
 
-                // Mostra la poesia segreta dopo un attimo
                 setTimeout(() => {
                     document.getElementById('secret-poem-overlay').classList.add('visible');
                 }, 1500);
             };
 
-            // RESET FUNCTION (Corretta per pulire le variabili)
+            // RESET FUNCTION
             const resetBtn = document.getElementById('reset-site-btn');
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
-                    // Nascondi overlay
                     document.getElementById('secret-poem-overlay').classList.remove('visible');
-                    
-                    // Trova tutti gli elementi caduti
                     const targets = document.querySelectorAll('.falling-element');
-                    
                     targets.forEach(el => {
-                        // Rimuovi la classe che causa la caduta
                         el.classList.remove('falling-element');
-                        
-                        // IMPORTANTE: Puliamo le proprietà inline che abbiamo aggiunto
                         el.style.removeProperty('--fall-distance');
                         el.style.removeProperty('--fall-rotate');
                         el.style.transform = ''; 
                     });
-
-                    // Pulisci la barra di ricerca
                     searchInput.value = '';
                     searchInput.focus();
-                    
-                    // Ripristina la lista della ricerca (mostra tutto)
                     const allLinks = poemsToc.querySelectorAll('li');
                     allLinks.forEach(li => li.style.display = '');
                 });
