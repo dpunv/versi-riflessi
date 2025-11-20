@@ -275,7 +275,38 @@
             font-style: normal;
             margin-bottom: 1rem;
         }
+        /* ======================================== */
+        /* POEM NOTES (SECRET)                      */
+        /* ======================================== */
+        .poem-notes {
+            display: none; /* Nascosto di default */
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background-color: var(--panel-bg);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 0 5px 5px 0;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-color);
+            animation: revealNote 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
+        .poem-notes.revealed {
+            display: block;
+        }
+
+        /* Animazione di comparsa */
+        @keyframes revealNote {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Impedisce la selezione del testo mentre si clicca velocemente sul titolo */
+        .poem-display h2 {
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: pointer; /* Suggerisce che è interagibile, opzionale */
+        }
         /* About Pages */
         .page-content {
             max-width: 70ch;
@@ -1106,16 +1137,45 @@
                 const poem = poems.find(p => p.id === poemId);
                 if (!poem) return;
 
+                // Creiamo l'HTML delle note solo se la nota esiste
+                const noteHTML = poem.note 
+                    ? `<div class="poem-notes">
+                            <strong>Nota dell'autore:</strong><br>
+                            ${poem.note}
+                        </div>` 
+                    : '';
+
                 const poemHTML = `
                     <article class="poem-display">
-                        <h2>${poem.title}</h2>
+                        <h2 id="active-poem-title">${poem.title}</h2>
                         <p class="poem-meta">${new Date(poem.date).toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                         <div class="poem-text">
                             ${poem.lines.map(line => `<div>${line || '&nbsp;'}</div>`).join('')}
                         </div>
+                        ${noteHTML}
                     </article>
                 `;
                 poemDisplayArea.innerHTML = poemHTML;
+                
+                // --- LOGICA DEI 5 CLICK ---
+                const titleElement = document.getElementById('active-poem-title');
+                const notesElement = poemDisplayArea.querySelector('.poem-notes');
+                let clickCount = 0;
+
+                // Se ci sono note e il titolo esiste, aggiungiamo il listener
+                if (titleElement && notesElement) {
+                    titleElement.addEventListener('click', () => {
+                        clickCount++;
+                        
+                        // Se arriviamo a 5 click
+                        if (clickCount === 5) {
+                            notesElement.classList.add('revealed');
+                            // Opzionale: scrolla leggermente verso le note per far vedere che sono apparse
+                            notesElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            clickCount = 0; // Reset del contatore
+                        }
+                    });
+                }
                 
                 tocLinks.forEach(link => link.classList.toggle('active', link.dataset.poemId === poemId));
             };
