@@ -460,12 +460,85 @@
             .secret-content button:hover {
                 background-color: var(--heading-color);
             }
+            .logo {
+                display: flex; /* Enables flexbox */
+                align-items: center; /* Vertically centers image and text */
+                gap: 12px; /* Adds space between the image and text */
+                text-decoration: none; /* Removes underline from the link */
+                font-weight: bold;
+                color: #333; /* Adjust to your brand color */
+            }
+
+            .logo-img {
+                height: 40px; /* Set the size of your logo */
+                width: auto; /* Maintains aspect ratio */
+            }
+            .qr-img {
+                height: 200px;
+                width: auto;
+                cursor: zoom-in;
+                transition: transform 0.2s;
+            }
+
+            .qr-img:hover {
+                transform: scale(1.02);
+            }
+
+            /* Modal animation state */
+            #qr-modal.show img {
+                transform: scale(1);
+            }
+            .modal-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgba(0, 0, 0, 0.6);
+
+                /* This is the secret for speed: */
+                backdrop-filter: blur(0px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.2s ease-out; /* Fast duration for snappiness */
+                cursor: zoom-out;
+            }
+
+            .modal-overlay img {
+                max-height: 80%;
+                max-width: 90%;
+                border-radius: 10px;
+                transform: scale(0.8);
+                transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+            }
+
+            /* Active State */
+            .modal-overlay.active {
+                opacity: 1;
+                visibility: visible;
+                backdrop-filter: blur(8px);
+            }
+
+            .modal-overlay.active img {
+                transform: scale(1);
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <header class="site-header">
-                <a href="#" class="logo" id="logo-link">Versi riflessi</a>
+                <a href="#" class="logo" id="logo-link">
+                    <img
+                        src="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAPgAAAAF+oABWcAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREiEREREREREREhEREhERERERIRIiERERERESIiIhERERERIAACIRERERIgAiIhEREREiAgAAIREREiICACIhEREREiICAAIRERERIgIAIhERERERIgICERERERERIiIREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        alt="Versi riflessi logo"
+                        class="logo-img"
+                    />
+                    Versi riflessi
+                </a>
                 <div class="header-right">
                     <button
                         id="theme-toggle"
@@ -586,6 +659,20 @@
                                             href="mailto:contact@versiriflessi.net"
                                             >contact@versiriflessi.net</a
                                         >
+                                    </p>
+                                    <h3>Condividi</h3>
+                                    <p>
+                                        Puoi condividere attraverso il codice
+                                        QR:
+                                        <br />
+                                        <img
+                                            src="qr-code.png"
+                                            alt="qr-code"
+                                            class="qr-img"
+                                        />
+                                        <div id="qr-modal" class="modal-overlay">
+                                            <img id="modal-img" src="qr-code.png" alt="Ingrandimento QR Code">
+                                        </div>
                                     </p>
                                 </div>
                             </div>
@@ -1693,6 +1780,18 @@
                     switchView("poems-view");
                 }
             });
+            const qrModal = document.getElementById('qr-modal');
+            const qrTrigger = document.querySelector('.qr-img');
+
+            if (qrTrigger && qrModal) {
+                qrTrigger.addEventListener('click', () => {
+                    qrModal.classList.add('active');
+                });
+
+                qrModal.addEventListener('click', () => {
+                    qrModal.classList.remove('active');
+                });
+            }
         </script>
         <script>
             if ("serviceWorker" in navigator) {
