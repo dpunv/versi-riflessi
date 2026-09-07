@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Versi riflessi</title>
+        <meta
+            name="description"
+            content="poesie scritte per qualcuno in cerca di qualcosa da qualche parte"
+        />
+
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAPgAAAAF+oABWcAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREiEREREREREREhEREhERERERIRIiERERERESIiIhERERERIAACIRERERIgAiIhEREREiAgAAIREREiICACIhEREREiICAAIRERERIgIAIhERERERIgICERERERERIiIREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        />
+
+        <link rel="manifest" href="../manifest.json" />
+        <meta name="theme-color" content="#a0522d" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="apple-touch-icon" href="../images/logo-192.png" />
+
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header class="site-header">
+                <a href="#" class="logo" id="logo-link">
+                    <img
+                        src="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAPgAAAAF+oABWcAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREiEREREREREREhEREhERERERIRIiERERERESIiIhERERERIAACIRERERIgAiIhEREREiAgAAIREREiICACIhEREREiICAAIRERERIgIAIhERERERIgICERERERERIiIREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+                        alt="Versi riflessi logo"
+                        class="logo-img"
+                    />
+                    Versi riflessi
+                </a>
+                <div class="header-right">
+                    <button
+                        id="theme-toggle"
+                        class="theme-switcher"
+                        aria-label="Toggle dark mode"
+                    >
+                        <svg
+                            class="sun-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            height="24"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        >
+                            <circle cx="12" cy="12" r="5" fill="currentColor" />
+
+                            <line x1="12" y1="1" x2="12" y2="4" />
+                            <line x1="12" y1="20" x2="12" y2="23" />
+                            <line x1="1" y1="12" x2="4" y2="12" />
+                            <line x1="20" y1="12" x2="23" y2="12" />
+
+                            <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" />
+                            <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" />
+
+                            <line x1="17.66" y1="6.34" x2="19.78" y2="4.22" />
+                            <line x1="4.22" y1="19.78" x2="6.34" y2="17.66" />
+                        </svg>
+                        <svg
+                            class="moon-icon"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <main>
+                <div class="book-layout">
+                    <aside class="left-panel">
+                        <button
+                            class="mobile-toggle"
+                            id="mobile-toggle"
+                            aria-label="Mostra/nascondi elenco poesie"
+                        >
+                            Elenco poesie
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path d="M12 16l-6-6h12l-6 6z" />
+                            </svg>
+                        </button>
+                        <div class="panel-content" id="panel-content">
+                            <div class="search-container">
+                                <svg
+                                    class="search-icon"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M10 2a8 8 0 105.293 14.293l4.907 4.907a1 1 0 001.414-1.414l-4.907-4.907A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"
+                                    ></path>
+                                </svg>
+                                <input
+                                    type="search"
+                                    id="search-input"
+                                    class="search-box"
+                                    placeholder="Cerca per titolo o testo..."
+                                />
+                            </div>
+                            <ul id="poems-toc"></ul>
+                        </div>
+                    </aside>
+
+                    <div class="content-viewer">
+                        <section id="poems-view" class="active">
+                            <div id="poem-display-area">
+                                <div class="page-content">
+                                    <h2>Versi riflessi</h2>
+                                    <p>
+                                        Versi riflessi nasce per condividere le
+                                        poesie che ho scritto. Spero che a
+                                        qualcuno possano piacere e che magari
+                                        possano far riflettere un po'.
+                                    </p>
+                                    <br />
+                                    <h3>L'autore</h3>
+                                    <p>
+                                        Mi chiamo Davide, sono un informatico, e
+                                        di tanto in tanto mi diletto con qualche
+                                        passione secondaria come scrivere
+                                        poesie.
+                                    </p>
+                                    <br />
+                                    <h3>Contattami</h3>
+                                    <p>
+                                        Se ti va, puoi lasciare un messaggio,
+                                        una riflessione o un saluto.
+                                    </p>
+                                    <p>
+                                        Puoi scrivermi a:
+                                        <a
+                                            href="mailto:contact@versiriflessi.net"
+                                            >contact@versiriflessi.net</a
+                                        >
+                                    </p>
+                                    <h3>Condividi</h3>
+                                    <p>
+                                        Puoi condividere attraverso il codice
+                                        QR:
+                                        <br />
+                                        <img
+                                            src="../images/qr-code.png"
+                                            alt="qr-code"
+                                            class="qr-img"
+                                        />
+                                        <div id="qr-modal" class="modal-overlay">
+                                            <img id="modal-img" src="../images/qr-code.png" alt="Ingrandimento QR Code">
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="site-footer">
+                <p>&copy; 2025 • Versi riflessi</p>
+            </footer>
+        </div>
+        <div id="secret-poem-overlay">
+            <div class="secret-content">
+                <h2>Grazie</h2>
+                <div
+                    class="poem-text"
+                    style="font-style: italic; margin-bottom: 2rem"
+                >
+                    <div>Hei tu, lettore</div>
+                    <div>che leggi versi</div>
+                    <div>scritti in ore e ore</div>
+                    <div>il riflesso è rotto</div>
+                    <div>grazie!</div>
+                </div>
+                <button id="reset-site-btn">Rifletti ancora</button>
+            </div>
+        </div>
+        <script src="scripts/poesie.js"></script>
+        <script src="scripts/applicazione.js"></script>
+    </body>
+</html>
